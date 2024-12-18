@@ -8,41 +8,19 @@ def calcDistance(ax, ay, bx, by):
 def calcMidpoint(ax, ay, bx, by):
     return [(ax+bx)*0.5, (ay+by)*0.5]
 
-def calcPi(runNumber="Test"):
-    print(runNumber)
+def calcPi():
     bx, by = 1, 0
-    totArea = 0
-    for i in range(1, 30):
-        if i > 2:
-            midpoint = calcMidpoint(0, 1, bx, by)
-            midpointX, midpointY = midpoint[0], midpoint[1]
-            midDistance = calcDistance(0, 0, midpointX, midpointY)
-            normalizedX = midpointX/midDistance
-            normalizedY = midpointY/midDistance
-            triHeight = 1-midDistance
-            triWidth = calcDistance(0, 1, bx, by)
-            triSize = (triHeight*triWidth)*0.5
-            totArea += triSize*(2**(i-2))
-        elif i == 1:
-            midpoint = [0.5, 0.5]
-            midpointX, midpointY = midpoint[0], midpoint[1]
-            midDistance = calcDistance(0, 0, midpointX, midpointY)
-            normalizedX = 1
-            normalizedY = 0
-            triHeight = midDistance
-            triWidth = calcDistance(0, 1, bx, by)
-            triSize = (triHeight*triWidth)*0.5
-            totArea += triSize
-        else:
-            midpoint = [0.5, 0.5]
-            midpointX, midpointY = midpoint[0], midpoint[1]
-            midDistance = calcDistance(0, 0, midpointX, midpointY)
-            normalizedX = midpointX/midDistance
-            normalizedY = midpointY/midDistance
-            triHeight = 1-midDistance
-            triWidth = calcDistance(0, 1, bx, by)
-            triSize = (triHeight*triWidth)*0.5
-            totArea += triSize
+    totArea = 0.5
+    for i in range(2, 30):
+        midpoint = calcMidpoint(0, 1, bx, by)
+        midpointX, midpointY = midpoint[0], midpoint[1]
+        midDistance = calcDistance(0, 0, midpointX, midpointY)
+        normalizedX = midpointX/midDistance
+        normalizedY = midpointY/midDistance
+        triHeight = 1-midDistance
+        triWidth = calcDistance(0, 1, bx, by)
+        triSize = (triHeight*triWidth)*0.5
+        totArea += triSize*(2**(i-2))
         
         bx, by = normalizedX, normalizedY
     return totArea*4
@@ -58,11 +36,10 @@ def manual():
     runNumber = int(input("How many runs would you like to have? "))
     startT = time.time()
     for i in range(runNumber):
-        calcPi(i)
+        calcPi()
     endT = time.time()
     print(f"Pi = {calcPi()}")
     print(f"Total Time Taken: {(endT-startT)} Seconds")
-    # print(f"Acerage Time Taken: {((endT-startT)/runNumber)*1000000} Microseconds")
     print(f"Average execution time over {runNumber} runs: {((endT-startT)/runNumber)*1000000:.5f} Microseconds")
     
 def main():
