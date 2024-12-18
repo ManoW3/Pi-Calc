@@ -9,7 +9,7 @@ def calcMidpoint(ax, ay, bx, by):
     return [(ax+bx)*0.5, (ay+by)*0.5]
 
 def calcPi(runNumber="Test"):
-    #print(runNumber)
+    print(runNumber)
     bx, by = 1, 0
     totArea = 0
     for i in range(1, 30):
