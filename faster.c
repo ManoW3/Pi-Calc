@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <locale.h>
 
 long double calcDistance (long double ax, long double ay, long double bx, long double by) {
     return sqrt(((ax-bx)*(ax-bx))+((ay-by)*(ay-by)));
@@ -45,8 +46,9 @@ long double calcPi () {
 }
 
 int main() {
-    // Number
-    int runNumber = 100000;
+    setlocale(LC_NUMERIC, "");                  // For better formatting when printing
+    // Number of runs
+    int runNumber = 10000000;
     clock_t start, end;                         // All the time stuff I found online
     double cpu_time_used;
     start = clock();
@@ -60,7 +62,7 @@ int main() {
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     printf("Pi: %.14Lf\n", calcPi());
-    printf("Time Taken: %f Seconds for %d runs\n", cpu_time_used, runNumber);
+    printf("Time Taken: %f Seconds for %'d runs\n", cpu_time_used, runNumber);
     float timePerRun = (cpu_time_used/runNumber)*1000000;
     printf("Average Time Taken: %f Microseconds\n", timePerRun);
 
