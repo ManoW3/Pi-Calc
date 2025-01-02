@@ -7,7 +7,7 @@ long double calcDistance (long double ax, long double ay, long double bx, long d
     return sqrt(((ax-bx)*(ax-bx))+((ay-by)*(ay-by)));
 }
 
-// Not the most effecient but I don't have internet so I can't search up how to return array
+// Not the most efficient but I don't have internet so I can't search up how to return array
 long double midpointX (long double ax, long double bx) {
     return (ax+bx)*0.5;
 }
@@ -48,7 +48,7 @@ long double calcPi () {
 int main() {
     setlocale(LC_NUMERIC, "");                  // For better formatting when printing
     // Number of runs
-    int runNumber = 10000000;
+    int runNumber = 100000;
     clock_t start, end;                         // All the time stuff I found online
     double cpu_time_used;
     start = clock();
